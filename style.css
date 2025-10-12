@@ -161,8 +161,9 @@ header nav ul li a.active {
     background-color: var(--light-color);
 }
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+   display: grid;
+    /* ANTES: grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* DEPOIS */
     gap: 30px;
     text-align: center;
     margin-top: 40px;
@@ -178,8 +179,9 @@ header nav ul li a.active {
 
 /* === SEÇÃO TESTIMONIALS (PÁGINA INICIAL) === */
 .testimonial-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+   display: grid;
+    /* ANTES: grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* DEPOIS */
     gap: 40px;
     margin-top: 40px;
 }
@@ -314,40 +316,6 @@ footer .container {
 footer p {
     margin: 0;
 }
-
-/* === RESPONSIVIDADE === */
-@media(max-width: 768px) {
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
-    
-    header .container {
-        flex-direction: column;
-    }
-    header nav {
-        margin-top: 10px;
-    }
-
-    .features-grid, .testimonial-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .process-steps {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .step {
-        width: 100%;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    footer .container {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
 /* === AJUSTE DO LOGO === */
 header .logo img {
     height: 50px; /* Altere este valor para o tamanho desejado */
@@ -388,4 +356,101 @@ header .logo img {
 /* Efeito de zoom suave ao passar o mouse */
 .portfolio-item:hover img {
     transform: scale(1.05);
+}
+/* === RESPONSIVIDADE === */
+
+/* Esconde os botões de controle do menu em telas grandes por padrão */
+.hamburger, .close-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--light-color);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001; /* Z-index alto para ficar sobre tudo */
+}
+
+/* Regras para telas com largura máxima de 768px (tablets e celulares) */
+@media(max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    #hero {
+        padding-top: 80px; /* Cria um espaço no topo para o cabeçalho */
+        height: auto; /* Deixa a altura se ajustar ao conteúdo */
+        min-height: 60vh; /* Garante uma altura mínima */
+    }
+    /* --- AJUSTES DO CABEÇALHO E MENU MÓVEL --- */
+    header .container {
+        flex-direction: row; /* Força o logo e o ícone a ficarem na mesma linha */
+        justify-content: space-between; /* Espaça eles para os cantos */
+    }
+
+    header nav {
+        /* O menu fica escondido fora da tela */
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh; /* Ocupa a tela inteira */
+        
+        /* Centraliza os links do menu */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        background-color: var(--dark-color);
+        margin-top: 0; /* Remove a margem que existia antes */
+        transition: left 0.3s ease-in-out; /* Animação suave */
+    }
+
+    /* Classe que o JavaScript vai adicionar para mostrar o menu */
+    header nav.active {
+        left: 0; /* Traz o menu para a tela */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Links um abaixo do outro */
+        text-align: center;
+    }
+
+    header nav ul li {
+        margin: 20px 0; /* Aumenta o espaçamento vertical */
+    }
+
+    header nav ul li a {
+        font-size: 1.5rem; /* Aumenta o tamanho da fonte no menu móvel */
+    }
+
+    .hamburger {
+        display: block; /* Mostra o botão hambúrguer */
+    }
+
+    .close-btn {
+        position: fixed; /* Fixo na tela para quando o menu estiver aberto */
+        top: 20px;
+        right: 25px;
+        /* Por padrão ele não aparece, o JS vai controlar isso */
+    }
+    
+    /* --- AJUSTES GERAIS DE LAYOUT --- */
+    .features-grid, 
+    .testimonial-grid,
+    .contact-grid {
+        grid-template-columns: 1fr; /* Força todas as grades para uma única coluna */
+    }
+
+    .process-steps {
+        flex-direction: column;
+        align-items: center; /* Centraliza os itens do processo */
+        gap: 30px;
+    }
+    .step {
+        width: 100%;
+        max-width: 350px; /* Evita que fique largo demais */
+    }
+
+    footer .container {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
