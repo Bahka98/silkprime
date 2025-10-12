@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato e Orçamento | Nome da Sua Empresa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Logo da Silk Prime"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="servicos.html">Nossos Serviços</a></li>
+                    <li><a href="contato.html" class="active">Contato e Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Fale Conosco</h1>
+                <p>Peça seu orçamento sem compromisso. Nossa equipe entrará em contato em até 24 horas.</p>
+            </div>
+        </section>
+
+        <section id="contact-section">
+            <div class="container contact-grid">
+                <div class="contact-form">
+                    <h3>Formulário de Orçamento</h3>
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="company-name">Nome da Empresa</label>
+                            <input type="text" id="company-name" name="company-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Seu Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail Corporativo</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Tipo de Serviço</label>
+                            <select id="service" name="service">
+                                <option value="laser">Gravação a Laser</option>
+                                <option value="cnc">Gravação CNC</option>
+                                <option value="tampografia">Tampografia</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantidade de Peças</label>
+                            <input type="number" id="quantity" name="quantity" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="file-upload">Envie sua arte (logo, etc.)</label>
+                            <input type="file" id="file-upload" name="file-upload">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem / Detalhes</label>
+                            <textarea id="message" name="message" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Solicitação</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Outras Formas de Contato</h3>
+                    <p><strong>Telefone:</strong><br>(XX) XXXX-XXXX</p>
+                    <p><strong>E-mail:</strong><br>orcamento@nomedasuampresa.com.br</p>
+                    <p><strong>Endereço:</strong><br>Rua Fictícia, 123 - Bairro Modelo<br>São Paulo - SP, CEP 01000-000</p>
+                    <p><strong>Horário de Atendimento:</strong><br>Segunda a Sexta, das 8h às 18h.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Silk Prime Gravações. Todos os direitos reservados.</p>
+            <p>contato@nomedasuampresa.com.br | (XX) XXXX-XXXX</p>
+        </div>
+    </footer>
+
+</body>
+</html>
